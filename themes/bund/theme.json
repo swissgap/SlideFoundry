@@ -1,0 +1,19 @@
+{
+  "name": "bund",
+  "label": "CD Bund Basis",
+  "principles": ["klassisch", "zeitlos", "diskret", "klar"],
+  "colors": {
+    "red": "#ff0000",
+    "black": "#111111",
+    "white": "#ffffff",
+    "muted": "#5f6368",
+    "line": "#d8d8d8"
+  },
+  "fontStack": "Frutiger, Arial, Helvetica Neue, Helvetica, sans-serif",
+  "rules": {
+    "externalRuntimeAssets": false,
+    "requiredSlides": ["title"],
+    "recommendedSlides": ["decision", "sources"],
+    "maxBulletLength": 170
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "enterprise-deck.schema.json",
+  "title": "Enterprise Presentation Deck",
+  "type": "object",
+  "required": ["schemaVersion", "title", "profile", "audience", "theme", "slides"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "id": { "type": "string" },
+    "title": { "type": "string", "minLength": 4 },
+    "profile": { "type": "string" },
+    "audience": { "type": "string" },
+    "owner": { "type": "string" },
+    "classification": { "type": "string" },
+    "theme": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "sources": { "type": "array", "items": { "type": "object" } },
+    "slides": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "title"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "enum": [
+              "title",
+              "agenda",
+              "section",
+              "content",
+              "comparison",
+              "timeline",
+              "process",
+              "decision",
+              "risk",
+              "kpi",
+              "chart",
+              "quote",
+              "case_study",
+              "roadmap",
+              "appendix",
+              "sources"
+            ]
+          },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "bullets": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

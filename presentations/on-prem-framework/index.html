@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>On-Premise HTML-Präsentationsframeworks</title>
+    <link rel="stylesheet" href="../../vendor/reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../../vendor/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="./custom.css">
+  </head>
+  <body>
+    <div class="reveal deck">
+      <div class="slides">
+        <section class="hero">
+          <div class="kicker">Management-Entscheidung</div>
+          <h1>On-Premise HTML-Präsentationen</h1>
+          <p class="lead">Drei lokale Frameworks im Vergleich, mit einer klaren Empfehlung für robuste, CI-fähige Management-Decks.</p>
+          <div class="hero-strip" aria-label="Framework-Auswahl">
+            <span>Reveal.js</span>
+            <span>Marp</span>
+            <span>Quarto</span>
+          </div>
+          <aside class="notes">
+            Ziel: eine Entscheidungsfolie für Teams, die lokale LLMs bereits abgedeckt haben und nur noch ein autarkes Präsentations-Framework brauchen.
+          </aside>
+        </section>
+
+        <section>
+          <div class="section-label">Kurzfazit</div>
+          <h2>Reveal.js ist der beste Default</h2>
+          <div class="recommendation-grid">
+            <article class="recommendation is-primary">
+              <span class="badge">Top-Empfehlung</span>
+              <h3>Reveal.js</h3>
+              <p>Maximales Design, starke Interaktivität und vollständig lokales Hosting ohne CDN-Zwang.</p>
+            </article>
+            <article class="recommendation">
+              <span class="badge muted">Schnell</span>
+              <h3>Marp</h3>
+              <p>Ideal, wenn Markdown-Erstellung und einfacher Export wichtiger sind als individuelle Web-Komponenten.</p>
+            </article>
+            <article class="recommendation">
+              <span class="badge muted">Datenstark</span>
+              <h3>Quarto</h3>
+              <p>Sehr gut, wenn interne SQL-, Excel- oder Python-Daten beim Build in die Präsentation einfließen sollen.</p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-label">On-Premise-Architektur</div>
+          <h2>Alles bleibt lokal steuerbar</h2>
+          <div class="flow">
+            <div class="flow-node">
+              <strong>Inhalt</strong>
+              <span>Markdown oder HTML</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node accent">
+              <strong>Framework</strong>
+              <span>Reveal.js lokal</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">
+              <strong>Ausgabe</strong>
+              <span>Browser, PDF, Kiosk</span>
+            </div>
+          </div>
+          <ul class="check-list">
+            <li>Keine externen Skripte, Fonts oder CDNs im laufenden Deck</li>
+            <li>Eigene CSS-Datei für Corporate Design, Logos und Layoutregeln</li>
+            <li>Interaktive HTML-Elemente, Diagramme und Videos direkt integrierbar</li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="section-label">Vergleich</div>
+          <h2>Framework-Auswahl nach Anforderung</h2>
+          <table class="decision-table">
+            <thead>
+              <tr>
+                <th>Anforderung</th>
+                <th>Beste Wahl</th>
+                <th>Warum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maximales Design und Freiheit</td>
+                <td><strong>Reveal.js</strong></td>
+                <td>CSS, HTML und Plugins sind direkt kontrollierbar.</td>
+              </tr>
+              <tr>
+                <td>Schnelle Erstellung aus Markdown</td>
+                <td><strong>Marp</strong></td>
+                <td>Geringer Overhead, lokale CLI und gute Exportpfade.</td>
+              </tr>
+              <tr>
+                <td>Live-Daten, Code und Reporting</td>
+                <td><strong>Quarto</strong></td>
+                <td>Datenpipelines lassen sich beim Build reproduzierbar einbetten.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <div class="section-label">Workflow</div>
+          <h2>Empfohlene lokale Struktur</h2>
+          <div class="folder-layout" aria-label="Ordnerstruktur">
+            <code>present_html/</code>
+            <code>├─ vendor/reveal.js/</code>
+            <code>├─ presentations/</code>
+            <code>│  └─ management-thema/</code>
+            <code>│     ├─ index.html</code>
+            <code>│     └─ custom.css</code>
+          </div>
+          <div class="numbered">
+            <p><span>1</span> Reveal.js lokal ablegen</p>
+            <p><span>2</span> Pro Thema einen Präsentationsordner erstellen</p>
+            <p><span>3</span> Gemeinsames CI-Template und Branding verwenden</p>
+            <p><span>4</span> HTML oder PDF intern ausliefern</p>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-label">Management-Fit</div>
+          <h2>Warum Reveal.js für anspruchsvolle Decks trägt</h2>
+          <div class="two-col">
+            <div>
+              <h3>Stark für Präsentierende</h3>
+              <ul>
+                <li>Speaker Notes, Foliennummern und Keyboard-Steuerung</li>
+                <li>Saubere PDF-Ausgabe über den Browser-Druckdialog</li>
+                <li>Gut versionierbar in Git</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Stark für Organisationen</h3>
+              <ul>
+                <li>Branding zentral über CSS steuerbar</li>
+                <li>Deployment auf Fileserver, Intranet oder lokalem Notebook</li>
+                <li>Keine Datenübertragung an externe Präsentationsdienste</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-label">Entscheidung</div>
+          <h2>Pragmatische Leitlinie</h2>
+          <div class="rule-stack">
+            <p><strong>Reveal.js</strong>, wenn das Ergebnis hochwertig, interaktiv und markenkonform sein soll.</p>
+            <p><strong>Marp</strong>, wenn Geschwindigkeit und Markdown-Export im Vordergrund stehen.</p>
+            <p><strong>Quarto</strong>, wenn Daten, Code und reproduzierbare Reports Teil des Decks sind.</p>
+          </div>
+          <p class="closing">Für den beschriebenen On-Premise-Einsatz: Reveal.js als Standard, Marp und Quarto als spezialisierte Werkzeuge daneben.</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../vendor/reveal.js/dist/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        controls: true,
+        progress: true,
+        slideNumber: "c/t",
+        transition: "slide"
+      });
+    </script>
+  </body>
+</html>

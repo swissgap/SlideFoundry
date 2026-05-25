@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: presentation-factory-llm-config
+  labels:
+    app.kubernetes.io/name: presentation-factory
+    app.kubernetes.io/component: llm-gateway
+data:
+  DEFAULT_LLM_PROVIDER: "onprem"
+  ONPREM_LLM_BASE_URL: "http://ollama:11434/v1"
+  ONPREM_LLM_MODEL: "llama3.1"
+  CORS_ALLOW_ORIGINS: "https://presentation-factory.apps.example.com"

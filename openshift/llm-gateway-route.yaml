@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: presentation-factory-api
+  labels:
+    app.kubernetes.io/name: presentation-factory
+    app.kubernetes.io/component: llm-gateway
+spec:
+  host: presentation-factory.apps.example.com
+  path: /api
+  to:
+    kind: Service
+    name: presentation-factory-llm-gateway
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

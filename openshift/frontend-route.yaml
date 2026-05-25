@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: presentation-factory
+  labels:
+    app.kubernetes.io/name: presentation-factory
+    app.kubernetes.io/component: frontend
+spec:
+  host: presentation-factory.apps.example.com
+  path: /
+  to:
+    kind: Service
+    name: presentation-factory-frontend
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
