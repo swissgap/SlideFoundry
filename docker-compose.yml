@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  llm-gateway:
+    build:
+      context: ./llm-gateway
+      dockerfile: Containerfile
+    ports:
+      - "8081:8081"
+    environment:
+      DEFAULT_LLM_PROVIDER: onprem
+      ONPREM_LLM_BASE_URL: http://ollama:11434/v1
+      ONPREM_LLM_MODEL: llama3.1

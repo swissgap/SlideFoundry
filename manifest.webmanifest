@@ -1,0 +1,18 @@
+{
+  "name": "Enterprise Presentation Factory",
+  "short_name": "Deck Factory",
+  "description": "On-Premise Web-App für CI-konforme Unternehmenspräsentationen.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f6f6",
+  "theme_color": "#ff0000",
+  "icons": [
+    {
+      "src": "./assets/bund-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ff0000">
+    <meta name="description" content="Lokale Enterprise-Web-App zum Erstellen, Prüfen und Betreiben von CI-konformen Präsentationen für alle Unternehmensbereiche.">
+    <title>Enterprise Presentation Factory</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./assets/bund-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./app.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+
+    <header class="app-header">
+      <div class="identity" aria-label="Kennzeichnung Schweizerische Eidgenossenschaft">
+        <img src="./assets/bund-mark.svg" width="48" height="48" alt="">
+        <div class="identity-text">
+          <span>Schweizerische Eidgenossenschaft</span>
+          <span>Confédération suisse</span>
+          <span>Confederazione Svizzera</span>
+          <span>Confederaziun svizra</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span id="network-state" class="state-pill">Status wird geprüft</span>
+        <a class="icon-button" href="./presentations/on-prem-framework/" title="Präsentation öffnen" aria-label="Präsentation öffnen">
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="app-shell">
+      <section class="hero-band" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow">Enterprise Presentation Factory</p>
+          <h1 id="app-title">CI-konforme Präsentationen für jedes Thema</h1>
+          <p class="hero-copy">
+            Briefing, Quellen und Daten beschreiben. Die App erzeugt daraus ein
+            strukturiertes, geprüftes Reveal.js-Deck für Management, Projekte,
+            Schulungen, Strategie, Finanzen, Risiken und Technik.
+          </p>
+        </div>
+        <div class="readiness-panel" aria-label="Betriebsstatus">
+          <div>
+            <span class="metric" id="deck-count">1</span>
+            <span class="metric-label">Deck verfügbar</span>
+          </div>
+          <div>
+            <span class="metric" id="cache-state">Prüfung</span>
+            <span class="metric-label">Offline-Cache</span>
+          </div>
+          <div>
+            <span class="metric" id="governance-state">Schema</span>
+            <span class="metric-label">Governance aktiv</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="generator-panel" aria-labelledby="generator-title">
+        <div class="section-heading">
+          <p class="eyebrow">Generator</p>
+          <h2 id="generator-title">Enterprise-Präsentation erstellen</h2>
+        </div>
+        <form id="generator-form" class="generator-form">
+          <label class="field wide">
+            <span>Briefing und Ziel der Präsentation</span>
+            <textarea id="content-brief" name="brief" rows="8" required minlength="24">Quartalsupdate für das Management: Status der wichtigsten Unternehmensinitiativen, Fortschritt gegen Ziele, Risiken, Budgetausblick, Entscheidungen für das nächste Quartal und klare nächste Schritte für die Bereichsleitungen.</textarea>
+          </label>
+          <label class="field wide">
+            <span>Quellen, Daten oder Kontext</span>
+            <textarea id="source-context-input" name="context" rows="8" placeholder="Beispiele: KPI-Auszug, CSV-Zusammenfassung, Projektliste, interne Quellen, Annahmen, Links im Intranet."></textarea>
+          </label>
+          <label class="field">
+            <span>Titel</span>
+            <input id="deck-title-input" name="title" type="text" value="Quartalsupdate Unternehmensinitiativen">
+          </label>
+          <label class="field">
+            <span>Präsentationsprofil</span>
+            <select id="profile-input" name="profile">
+              <option value="board_update">Board / Management Update</option>
+              <option value="management_decision">Management-Entscheidung</option>
+              <option value="project_status">Projektstatus</option>
+              <option value="strategy">Strategie</option>
+              <option value="financial_report">Finanzreport</option>
+              <option value="risk_review">Risk Review</option>
+              <option value="technical_architecture">Technische Architektur</option>
+              <option value="training">Schulung</option>
+              <option value="workshop">Workshop</option>
+              <option value="sales_pitch">Angebot / Pitch</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Zielgruppe</span>
+            <select id="audience-input" name="audience">
+              <option>Management</option>
+              <option>Fachgremium</option>
+              <option>Projektteam</option>
+              <option>Technik</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Folien</span>
+            <input id="slide-count-input" name="slides" type="number" min="4" max="10" value="7">
+          </label>
+          <label class="field">
+            <span>Ton & Struktur</span>
+            <select id="style-input" name="style">
+              <option>Klar und formal</option>
+              <option>Entscheidungsorientiert</option>
+              <option>Technisch strukturiert</option>
+              <option>Kurz und prägnant</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Organisationseinheit</span>
+            <input id="owner-input" name="owner" type="text" value="Unternehmensleitung">
+          </label>
+          <fieldset class="field switches">
+            <legend>Governance</legend>
+            <label><input id="require-sources-input" type="checkbox" checked> Quellenfolie erzwingen</label>
+            <label><input id="require-decision-input" type="checkbox" checked> Entscheidung/Nächste Schritte erzwingen</label>
+            <label><input id="confidential-input" type="checkbox"> Als intern markieren</label>
+          </fieldset>
+          <div class="generator-actions">
+            <button class="primary-button" type="submit">Präsentation generieren</button>
+            <button id="clear-generated" class="secondary-button" type="button">Entwürfe löschen</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-panel" aria-labelledby="admin-title">
+        <div class="section-heading">
+          <p class="eyebrow">Admin</p>
+          <h2 id="admin-title">LLM-Anbindung via API</h2>
+        </div>
+        <form id="llm-admin-form" class="admin-form">
+          <label class="field">
+            <span>Generator-Modus</span>
+            <select id="llm-mode-input" name="llmMode">
+              <option value="rules">Regelbasiert lokal</option>
+              <option value="gateway">LLM via API mit lokalem Fallback</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Provider</span>
+            <select id="llm-provider-input" name="llmProvider">
+              <option value="onprem">On-Prem / OpenAI-kompatibel</option>
+              <option value="openai">OpenAI</option>
+              <option value="anthropic">Claude / Anthropic</option>
+              <option value="gemini">Gemini / Google</option>
+            </select>
+          </label>
+          <label class="field wide-admin">
+            <span>Gateway-Endpunkt</span>
+            <input id="llm-endpoint-input" name="llmEndpoint" type="text" value="/api/llm/generate">
+          </label>
+          <label class="field">
+            <span>Modell</span>
+            <input id="llm-model-input" name="llmModel" type="text" placeholder="z. B. internes-modell, gpt-*, claude-*, gemini-*">
+          </label>
+          <label class="field">
+            <span>Temperatur</span>
+            <input id="llm-temperature-input" name="llmTemperature" type="number" min="0" max="1" step="0.1" value="0.2">
+          </label>
+          <div class="admin-actions">
+            <button class="primary-button" type="submit">LLM-Konfiguration speichern</button>
+            <button id="test-llm-config" class="secondary-button" type="button">Verbindung testen</button>
+          </div>
+          <p class="admin-note">
+            Public-LLM API-Schlüssel werden nicht im Browser gespeichert. Das LLM-Gateway liest
+            Schlüssel und Basis-URLs serverseitig aus OpenShift Secrets oder Umgebungsvariablen.
+          </p>
+        </form>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="deck-list" aria-labelledby="deck-list-title">
+          <div class="section-heading">
+            <p class="eyebrow">Bibliothek</p>
+            <h2 id="deck-list-title">Präsentationen</h2>
+          </div>
+          <div id="deck-cards" class="deck-cards"></div>
+        </div>
+
+        <aside class="ops-panel" aria-labelledby="ops-title">
+          <div class="section-heading">
+            <p class="eyebrow">Betrieb</p>
+            <h2 id="ops-title">Produktions-Checks</h2>
+          </div>
+          <ul class="checklist">
+            <li><span aria-hidden="true"></span> Themenunabhängiges Deck-Schema</li>
+            <li><span aria-hidden="true"></span> Profilbasierte Folienstruktur</li>
+            <li><span aria-hidden="true"></span> Lokale Reveal.js Assets</li>
+            <li><span aria-hidden="true"></span> Service Worker Cache</li>
+            <li><span aria-hidden="true"></span> Lokale Deck-Erzeugung</li>
+            <li><span aria-hidden="true"></span> Optionale LLM-API mit Fallback</li>
+            <li><span aria-hidden="true"></span> Governance-Score und Quellenprüfung</li>
+            <li><span aria-hidden="true"></span> Manifest für Kiosk/PWA</li>
+            <li><span aria-hidden="true"></span> Health-Datei für Monitoring</li>
+            <li><span aria-hidden="true"></span> Keine externen CDN-Abhängigkeiten</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="preview-zone" aria-labelledby="preview-title">
+        <div class="preview-header">
+          <div>
+            <p class="eyebrow">Vorschau</p>
+            <h2 id="preview-title">Aktives Deck</h2>
+          </div>
+          <div class="preview-actions">
+            <button id="reload-preview" class="secondary-button" type="button">Neu laden</button>
+            <button id="export-current" class="secondary-button" type="button">HTML exportieren</button>
+            <a id="open-current" class="primary-button" href="./presentations/on-prem-framework/">Öffnen</a>
+          </div>
+        </div>
+        <div class="preview-frame-wrap">
+          <iframe id="deck-preview" title="Präsentationsvorschau" src="./presentations/on-prem-framework/" loading="eager"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <div id="app-alert" class="app-alert" role="status" aria-live="polite" hidden></div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
