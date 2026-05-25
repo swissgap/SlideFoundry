@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Bundesrot mit Schweizer Kreuz</title>
+  <desc id="desc">Vereinfachte lokale Markierung in Bundesrot fuer die Praesentations-App.</desc>
+  <rect width="96" height="96" fill="#ff0000"/>
+  <path fill="#fff" d="M39 20h18v19h19v18H57v19H39V57H20V39h19z"/>
+</svg>
